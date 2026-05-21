@@ -552,6 +552,17 @@ function ProblemDetail() {
 };
     const submitSolution = () => {
 
+  if (
+    code.trim() === "" ||
+    code === "// Write your code here"
+  ) {
+
+    alert("Please write code first!");
+
+    return;
+
+  }
+
   let solvedProblems =
     JSON.parse(
       localStorage.getItem("solvedProblems")
@@ -574,7 +585,7 @@ function ProblemDetail() {
 
   alert("Problem Solved Successfully ✅");
 
-  };
+};
 
   if (!problem) {
 
