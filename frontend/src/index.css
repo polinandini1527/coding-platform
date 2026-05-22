@@ -94,6 +94,21 @@ button:hover {
   background: #6d28d9;
 }
 
+/* Navbar logout button */
+.nav-logout {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.12);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.nav-logout:hover {
+  background: rgba(255,255,255,0.03);
+}
+
 /* ==================== Headings ==================== */
 
 h1 {
@@ -1114,4 +1129,152 @@ cursor: pointer;
 
   background: #b91c1c !important;
 
+}
+.profile-menu {
+  position: relative;
+  list-style: none;
+}
+
+.profile-icon {
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 30px;
+  right: 0;
+  background: #1e1e1e;
+  padding: 10px;
+  border-radius: 8px;
+  min-width: 140px;
+}
+
+.dropdown-menu a,
+.dropdown-menu button {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  color: white;
+  text-decoration: none;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.profile-menu:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu button:hover {
+  background: #333;
+}
+.dashboard-container{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#0f172a;
+}
+
+.dashboard-box{
+  background:#1e293b;
+  padding:40px;
+  border-radius:15px;
+  text-align:center;
+  width:350px;
+  color:white;
+}
+
+.dashboard-box h1{
+  margin-bottom:10px;
+}
+
+.dashboard-box p{
+  color:#cbd5e1;
+}
+
+.stats-card{
+  background:#334155;
+  padding:20px;
+  border-radius:12px;
+  margin:25px 0;
+}
+
+.stats-card h1{
+  font-size:40px;
+  color:#38bdf8;
+}
+
+.dashboard-box button{
+  width:100%;
+  padding:12px;
+  margin-top:15px;
+  border:none;
+  border-radius:10px;
+  background:#2563eb;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+}
+
+.logout-btn{
+  background:#dc2626 !important;
+}
+.dashboard-container{
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #121212;
+}
+
+.dashboard-box{
+  background: #1e1e1e;
+  padding: 40px;
+  border-radius: 15px;
+  width: 400px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.profile-details{
+  margin: 20px 0;
+  padding: 15px;
+  background: #2a2a2a;
+  border-radius: 10px;
+  text-align: left;
+}
+
+.profile-details p{
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.stats-card{
+  background: #2a2a2a;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+button{
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #4cafef;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.logout-btn{
+  background: crimson;
 }

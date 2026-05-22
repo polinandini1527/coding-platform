@@ -17,27 +17,19 @@ function Login() {
 
   const handleLogin = () => {
 
-    const storedUser =
-      JSON.parse(
-        localStorage.getItem(
-          "user"
-        )
-      );
+    const storedUser = JSON.parse(localStorage.getItem("user") || "null");
+    const emailInput = (email || "").trim().toLowerCase();
+    const passwordInput = (password || "").trim();
 
     if (
-
       storedUser &&
-
-      storedUser.email === email &&
-
-      storedUser.password === password
-
+      (storedUser.email || "").trim().toLowerCase() === emailInput &&
+      (storedUser.password || "").trim() === passwordInput
     ) {
 
-      localStorage.setItem(
-        "loggedIn",
-        "true"
-      );
+      // mark session — set both a flag and a token for compatibility
+      localStorage.setItem("loggedIn", "true");
+      localStorage.setItem("token", "true");
 
       alert(
         "Login Successful ✅"
@@ -93,13 +85,8 @@ function Login() {
         </button>
 
         <p>
-
-          Don't have account?
-
-          <Link to="/signup">
-            Signup
-          </Link>
-
+          Don't have account?&nbsp;
+          <Link to="/register">Register</Link>
         </p>
 
       </div>

@@ -6,6 +6,7 @@ import ProtectedRoute
 from "./components/ProtectedRoute";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 import Signup from "./pages/Signup";
 
 import {
@@ -36,6 +37,10 @@ function App() {
           path="/login"
           element={<Login />}
         />
+        <Route
+          path="/register"
+          element={<Register/>}
+          />
         <Route path="/signup" element={<Signup />} />
 
         <Route

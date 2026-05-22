@@ -536,57 +536,98 @@ function ProblemDetail() {
     (p) => p.id === Number(id)
   );
 
-  const runCode = () => {
-
-    try {
-
-      const result = eval(code);
-
-      setOutput(String(result));
-
-    } catch (error) {
-
-      setOutput(error.message);
-
-    }
-};
-    const submitSolution = () => {
+ const runCode = () => {
 
   if (
+    !code ||
     code.trim() === "" ||
     code === "// Write your code here"
   ) {
 
-    alert("Please write code first!");
+    alert("Write Code First ⚠️");
+    return;
 
+  }
+
+  try {
+
+    const result = eval(code);
+
+    setOutput(
+      typeof result === "object"
+        ? JSON.stringify(result)
+        : String(result)
+    );
+
+  } catch (error) {
+
+    setOutput(error.message);
+
+  }
+
+};
+
+const submitSolution = () => {
+
+  if (
+    !code ||
+    code.trim() === "" ||
+    code === "// Write your code here"
+  ) {
+
+    alert("Write Code First ⚠️");
+    return;
+
+  }
+
+  const expectedOutput =
+    problem.example
+      .split("Output: ")[1]
+      .trim();
+
+  if (
+    output.trim().replace(/\s/g, "") !==
+    expectedOutput.replace(/\s/g, "")
+  ) {
+
+    alert("Wrong Output ❌");
     return;
 
   }
 
   let solvedProblems =
     JSON.parse(
-      localStorage.getItem("solvedProblems")
+      localStorage.getItem(
+        "solvedProblems"
+      )
     ) || [];
 
   if (
-    !solvedProblems.includes(Number(id))
+    !solvedProblems.includes(
+      Number(id)
+    )
   ) {
 
-    solvedProblems.push(Number(id));
+    solvedProblems.push(
+      Number(id)
+    );
 
     localStorage.setItem(
       "solvedProblems",
-      JSON.stringify(solvedProblems)
+      JSON.stringify(
+        solvedProblems
+      )
     );
 
   }
 
   setSubmitted(true);
 
-  alert("Problem Solved Successfully ✅");
+  alert(
+    "Problem Solved Successfully ✅"
+  );
 
 };
-
   if (!problem) {
 
     return <h1>Problem Not Found</h1>;
@@ -690,6 +731,7 @@ function ProblemDetail() {
           <pre>{output}</pre>
 
         </div>
+        
 
       </div>
 

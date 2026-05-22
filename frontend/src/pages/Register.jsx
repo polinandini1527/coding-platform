@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
 
@@ -7,9 +8,14 @@ function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleRegister = async (e) => {
 
     e.preventDefault();
+    if (isSubmitting) return;
+    setIsSubmitting(true);
 
     try {
 
@@ -22,12 +28,26 @@ function Register() {
         }
       );
 
-      alert(res.data.message);
+      // save the newly registered user locally so the client-side login flow works
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ name: (name||"").trim(), email: (email||"").trim().toLowerCase(), password: (password||"").trim() })
+      );
+      // also set a token flag
+      localStorage.setItem("token", "true");
+      // mark loggedIn for compatibility with Nav and ProtectedRoute
+      localStorage.setItem("loggedIn", "true");
+
+      alert(res.data?.message || "Registration successful");
+      navigate("/login");
 
     } catch (error) {
 
-      alert("Registration Failed");
+      const msg = error?.response?.data?.message || error.message || "Registration Failed";
+      alert(msg);
 
+    } finally {
+      setIsSubmitting(false);
     }
 
   };
@@ -64,8 +84,8 @@ function Register() {
           required
         />
 
-        <button>
-          Register
+        <button type="submit" disabled={isSubmitting}>
+          {isSubmitting ? "Registering..." : "Register"}
         </button>
 
       </form>

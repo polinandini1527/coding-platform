@@ -1,19 +1,17 @@
-import {
-  Navigate
-} from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
-function ProtectedRoute({
-  children
-}) {
+function ProtectedRoute({ children }) {
 
-  const isLoggedIn =
-    localStorage.getItem(
-      "loggedIn"
-    );
+  const token =
+    localStorage.getItem("token");
 
-  return isLoggedIn
-    ? children
-    : <Navigate to="/login" />;
+  if (!token) {
+
+    return <Navigate to="/login" />;
+
+  }
+
+  return children;
 
 }
 
